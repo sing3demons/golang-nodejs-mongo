@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "go-server"
+	},
+	{
+		"path": "go-client"
+	},
+	{
+		"path": "node-client"
+	}
+],
+  "settings": {}
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package service;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./service";
+
+service ProductService {
+    rpc GetProduct (ProductRequest) returns (ProductResponse);
+}
+
+message ProductResponse {
+    string type = 1;
+    string id = 2;
+    string name = 3;
+    string href = 4;
+    string lifecycle_status = 5;
+    string version = 6;
+    google.protobuf.Timestamp last_update = 7;
+    ValidFor valid_for = 8;
+    ProductPrice product_price = 9;
+}
+
+message ProductPrice {
+    string name = 1;
+    double value = 2;
+    string unit = 3;
+}
+
+message ValidFor {
+    google.protobuf.Timestamp start_date_time = 1;
+    google.protobuf.Timestamp end_date_time = 2;
+}
+
+message ProductRequest {
+    string id = 1;
+}
