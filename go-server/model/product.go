@@ -3,16 +3,24 @@ package model
 import "time"
 
 type Products struct {
-	Type            string    `json:"@type,omitempty" bson:"@type,omitempty"`
-	ID              string    `json:"_id,omitempty" bson:"_id,omitempty"`
-	Name            string    `json:"name,omitempty" bson:"name,omitempty"`
-	Href            string    `json:"href,omitempty" bson:"href,omitempty"`
-	LifecycleStatus string    `json:"lifecycleStatus,omitempty" bson:"lifecycleStatus,omitempty"`
-	Version         string    `json:"version,omitempty" bson:"version,omitempty"`
-	LastUpdate      *time.Time `json:"lastUpdate,omitempty" bson:"lastUpdate,omitempty"`
-	ValidFor        *ValidFor `json:"validFor,omitempty" bson:"validFor,omitempty"`
+	Type            string        `json:"@type,omitempty" bson:"@type,omitempty"`
+	ID              string        `json:"_id,omitempty" bson:"_id,omitempty"`
+	Name            string        `json:"name,omitempty" bson:"name,omitempty"`
+	Href            string        `json:"href,omitempty" bson:"href,omitempty"`
+	LifecycleStatus string        `json:"lifecycleStatus,omitempty" bson:"lifecycleStatus,omitempty"`
+	Version         string        `json:"version,omitempty" bson:"version,omitempty"`
+	LastUpdate      *time.Time    `json:"lastUpdate,omitempty" bson:"lastUpdate,omitempty"`
+	ValidFor        *ValidFor     `json:"validFor,omitempty" bson:"validFor,omitempty"`
+	Category        Category      `json:"category,omitempty" bson:"category,omitempty"`
+	ProductPrice    *ProductPrice `json:"price,omitempty" bson:"productPrice,omitempty"`
+}
 
-	ProductPrice *ProductPrice `json:"price,omitempty" bson:"productPrice,omitempty"`
+type Category struct {
+	ID           string     `json:"_id,omitempty" bson:"_id,omitempty"`
+	Href         string     `json:"href,omitempty" bson:"href,omitempty"`
+	Name         string     `json:"name,omitempty" bson:"name,omitempty"`
+	Products     []Products `json:"products,omitempty" bson:"products,omitempty"`
+	ProductTotal int64      `json:"productTotal,omitempty" bson:"productTotal,omitempty"`
 }
 
 type ProductPrice struct {

@@ -39,8 +39,10 @@ func main() {
 
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
+	r.GET("/categories", productHandler.GetCategories)
 	r.GET("/products", productHandler.FindProducts)
 	r.GET("/products/:id", productHandler.FindProductByID)
+	r.GET("/categories/:categoryId", productHandler.FindProductByCategoryID)
 
 	r.Run(":8080")
 }
